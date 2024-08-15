@@ -1,6 +1,5 @@
 import argparse
 import os
-from numpy import int16, frombuffer
 import speech_recognition as sr
 from datetime import datetime, timedelta
 from queue import Queue
@@ -25,7 +24,7 @@ class RealTimeTranscription:
 
         self.recorder = sr.Recognizer()
         self.recorder.energy_threshold = self.energy_threshold
-        self.recorder.dynamic_energy_threshold = False
+        self.recorder.dynamic_energy_threshold = True
 
         self.source = self._get_microphone_source()
 
@@ -81,10 +80,11 @@ class RealTimeTranscription:
         if phrase_complete:
             self.transcription.append(transcription)
         else:
-            self.transcription[-1] = transcription
+            if self.transcription:
+               self.transcription[-1] = f"{self.transcription[-1]} {transcription}"
 
         self._clear_console()
-        print("\n".join(self.transcription), end='', flush=True)
+        print("\n".join(self.transcription), end='', flush=True, color='green')
 
     def _save_audio_cache(self, audio_data):
         with open(self.cache_file, "wb") as f:
