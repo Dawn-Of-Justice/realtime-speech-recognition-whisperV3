@@ -1,0 +1,4 @@
+numpy
+speech_recognition
+groq
+pyaudio
