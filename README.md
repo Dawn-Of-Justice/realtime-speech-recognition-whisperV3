@@ -38,4 +38,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-For any questions or inquiries, please contact us at [email protected]
+For any questions or inquiries, please contact me at [salosoja@gmail.com]
