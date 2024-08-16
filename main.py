@@ -9,7 +9,7 @@ from groq import Groq
 from print_color import print
 
 class RealTimeTranscription:
-    def __init__(self, cache_file="temp_audio.wav", non_english=False, energy_threshold=1000, 
+    def __init__(self, cache_file="temp_audio.wav", energy_threshold=1000, 
                  record_timeout=2.0, phrase_timeout=3.0, default_microphone="pulse"):
         groq_api = os.environ.get("GROQ_API_KEY")
         self.client = Groq(api_key=groq_api) 
